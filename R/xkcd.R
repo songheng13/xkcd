@@ -35,7 +35,7 @@ xkcd <- function(number) {
   url <- file.path("https://xkcd.com", number, "info.0.json")
   results <- jsonlite::read_json(url)
   x <- new_xkcd(results)
-  x <- validate_xkcd(x)
+  # x <- validate_xkcd(x)
   return(x)
 }
 
@@ -76,7 +76,7 @@ plot.xkcd <- function(x, ...) {
   if (img_type == "png") {
     p <- png::readPNG(tmp$content)
   } else if (img_type == "jpg" || img_type == "jepg") {
-    p <- jpeg::readHPEG(tmp$content)
+    p <- jpeg::readJPEG(tmp$content)
   }
 
   graphics::plot.new()
